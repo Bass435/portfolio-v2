@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>อรรถพล ทองโตนด - CV Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            /* Colors */
+            --primary: #2563eb;
+            --primary-light: #eff6ff;
+            --primary-dark: #1e40af;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --bg-color: #f3f4f6;
+            --paper: #ffffff;
+            --border: #e5e7eb;
+            --accent: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Layout */
+        .cv-container {
+            max-width: 900px;
+            margin: 3rem auto;
+            background-color: var(--paper);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Print adjustments */
+        @media print {
+            body {
+                background: none;
+            }
+
+            .cv-container {
+                box-shadow: none;
+                margin: 0;
+                max-width: 100%;
+                border-radius: 0;
+            }
+
+            .print-btn {
+                display: none;
+            }
+        }
+
+        /* Header / Profile */
+        .header {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 3rem 4rem;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .header h2 {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: #bfdbfe;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item i {
+            width: 16px;
+            height: 16px;
+            opacity: 0.8;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 3rem 4rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title i {
+            color: var(--primary);
+        }
+
+        /* Timeline / Education */
+        .timeline-item {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--border);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--primary);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+            display: inline-block;
+            background: var(--primary-light);
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Awards Table (converted to cards for better flow) */
+        .award-card {
+            background-color: #f9fafb;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.2s;
+            border-left: 4px solid #f59e0b;
+            /* Golden accent for awards */
+        }
+
+        .award-card:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .award-year {
+            font-weight: 700;
+            color: #d97706;
+            font-size: 0.9rem;
+        }
+
+        .award-title {
+            font-weight: 600;
+            margin: 0.25rem 0;
+        }
+
+        .award-org {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Research & Expertise */
+        .research-box {
+            background: var(--primary-light);
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .research-box h4 {
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Sidebar info */
+        .sidebar {
+            background-color: #f8fafc;
+            padding: 2rem;
+            border-radius: 8px;
+            height: fit-content;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            color: var(--text-main);
+        }
+
+        .holistic-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .holistic-list li {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .holistic-list li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .holistic-list strong {
+            display: block;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        /* Floating Print Button */
+        .print-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .print-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 2rem;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+                gap: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="print-btn" onclick="window.print()">
+        <i data-lucide="printer"></i> พิมพ์ CV
+    </button>
+
+    <div class="cv-container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1>อรรถพล ทองโตนด</h1>
+            <h2>นักวิชาการเพื่อสังคม | มหาวิทยาลัยราชภัฏพิบูลสงคราม</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i data-lucide="map-pin"></i>
+                    <span>พิษณุโลก & ชุมพร, ประเทศไทย</span>
+                </div>
+                <div class="contact-item">
+                    <i data-lucide="briefcase"></i>
+                    <span>คณะวิทยาศาสตร์และเทคโนโลยี</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Grid -->
+        <main class="main-content">
+
+            <!-- Left Column (Main Experience & Research) -->
+            <div class="main-column">
+
+                <!-- About Profile Synopsis -->
+                <section class="section">
+                    <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-main);">
+                        นักวิชาการยุคใหม่ที่มีความสามารถหลากหลายมิติ (Multidisciplinary) ผู้ทำหน้าที่เป็น "สะพานเชื่อม"
+                        ระหว่างองค์ความรู้ทางวิทยาศาสตร์และเทคโนโลยีกับความต้องการที่แท้จริงของชุมชน
+                        มุ่งเน้นการแก้ปัญหาเชิงประจักษ์แบบบูรณาการ ผ่านงานวิจัย งานบริการสาธารณสุข และเครือข่ายจิตอาสา
+                        อาสาสมัครพัฒนาสังคม (อพม.)
+                    </p>
+                </section>
+
+                <section class="section">
+                    <h3 class="section-title"><i data-lucide="book-open"></i> วิวัฒนาการของคุณวุฒิ</h3>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">2562 (2019)</span>
+                        <h4 class="timeline-title">การขับเคลื่อนระบบบริการสุขภาพในยุคดิจิทัลฯ</h4>
+                        <div class="timeline-subtitle">วิทยาลัยพยาบาลบรมราชชนนี พุทธชินราช</div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">ต่อยอดความรู้สู่ระบบสุขภาพดิจิทัล
+                            (Digital Health) เพื่อยกระดับคุณภาพชีวิตของผู้ป่วยและกลุ่มเปราะบางระดับพื้นที่</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">2562 (2019)</span>
+                        <h4 class="timeline-title">ฟื้นฟูวิชาการพยาบาลเวชปฏิบัติทั่วไป</h4>
+                        <div class="timeline-subtitle">วิทยาลัยพยาบาลบรมราชชนนี พุทธชินราช</div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">
+                            ประกาศนียบัตรการศึกษาต่อเนื่องสาขาพยาบาลศาสตร์ เสริมความรู้สาธารณสุขเพื่อชุมชน</p>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h3 class="section-title"><i data-lucide="microscope"></i> ความเชี่ยวชาญด้านทรัพยากรทางทะเล</h3>
+                    <div class="research-box">
+                        <h4>การวิจัยวิกฤตปะการังฟอกขาว</h4>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">ภายใต้การสนับสนุนของ สกสว. (TSRI)
+                            งานวิจัยนี้ครอบคลุมการวิเคราะห์ผลกระทบแบบ 3 มิติ:</p>
+                        <ul>
+                            <li><strong>ระบบนิเวศ (Ecology):</strong>
+                                วิเคราะห์การสูญเสียของความหลากหลายทางชีวภาพและห่วงโซ่อาหาร</li>
+                            <li><strong>เศรษฐกิจ (Economy):</strong>
+                                ประเมินผลกระทบต่ออุตสาหกรรมท่องเที่ยวชายฝั่งและประมงพื้นบ้าน (Blue Economy)</li>
+                            <li><strong>สังคม (Society):</strong> ผลกระทบต่อความมั่นคงทางอาหารและวิถีชีวิตในชุมพร</li>
+                        </ul>
+                    </div>
+                    <p style="font-size: 0.95rem;"><strong>จุดเด่นงานวิจัย:</strong> การมุ่งเน้นวัดศักยภาพการฟื้นตัว
+                        (Resilience) ของแนวปะการัง เพื่อนำไปสู่การวางแผนเขตอนุรักษ์ได้อย่างเป็นรูปธรรม</p>
+                </section>
+
+                <section class="section">
+                    <h3 class="section-title"><i data-lucide="award"></i> รางวัลและเกียรติคุณยอดเยี่ยม</h3>
+
+                    <div class="award-card">
+                        <div class="award-year">พ.ศ. 2567 (2024)</div>
+                        <h4 class="award-title">บุคลากรดีเด่นด้านพันธกิจสัมพันธ์และบริการวิชาการแก่สังคม</h4>
+                        <div class="award-org">คณะวิทยาศาสตร์และเทคโนโลยี มรภ.พิบูลสงคราม</div>
+                    </div>
+
+                    <div class="award-card">
+                        <div class="award-year">พ.ศ. 2565 (2022)</div>
+                        <h4 class="award-title">นักวิจัยผู้สร้างสรรค์ผลงานบริการวิชาการรับใช้สังคมดีเด่น</h4>
+                        <div class="award-org">มหาวิทยาลัยราชภัฏพิบูลสงคราม</div>
+                    </div>
+
+                    <div class="award-card"
+                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: none; border: none; padding: 0; box-shadow: none;">
+                        <div style="border-left: 4px solid var(--border); padding-left: 1rem;">
+                            <div class="award-year" style="color: var(--text-muted);">พ.ศ. 2564</div>
+                            <h4 class="award-title" style="font-size: 0.95rem;">ผู้มีผลงานดีเด่นด้านศิลปวัฒนธรรม
+                                (จิตอาสา)</h4>
+                            <div class="award-org" style="font-size: 0.8rem;">สำนักศิลปะและวัฒนธรรม</div>
+                        </div>
+                        <div style="border-left: 4px solid var(--border); padding-left: 1rem;">
+                            <div class="award-year" style="color: var(--text-muted);">พ.ศ. 2561</div>
+                            <h4 class="award-title" style="font-size: 0.95rem;">อาจารย์ที่ปรึกษาดีเด่นคณะวิทย์ฯ</h4>
+                            <div class="award-org" style="font-size: 0.8rem;">มรภ.พิบูลสงคราม</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Column (Sidebar Elements) -->
+            <div class="sidebar-column">
+
+                <div class="sidebar section">
+                    <h3 class="section-title" style="font-size: 1.1rem; border-color: var(--border);"><i
+                            data-lucide="users"></i> เครือข่ายงานอาสาสมัคร</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-main); margin-bottom: 1rem;">
+                        เครือข่ายพัฒนางานระดับชุมชนผ่านเครือข่ายกระทรวง พม. (อพม.) ในพื้นที่จังหวัดชุมพร
+                        สร้างกระบวนการวิจัยแบบมีส่วนร่วม</p>
+
+                    <h4 style="font-size: 0.9rem; color: var(--primary); margin-bottom: 0.5rem;">พื้นที่ดำเนินงาน
+                        (จ.ชุมพร)</h4>
+                    <div class="tag-list">
+                        <span class="tag">อ.ละแม (ต.สวนแตง)</span>
+                        <span class="tag">ต.ละแม</span>
+                        <span class="tag">ต.ทุ่งคาวัด</span>
+                        <span class="tag">ต.ทุ่งหลวง</span>
+                        <span class="tag">อ.หลังสวน</span>
+                    </div>
+                </div>
+
+                <div class="sidebar section" style="margin-top: 2rem;">
+                    <h3 class="section-title" style="font-size: 1.1rem; border-color: var(--border);"><i
+                            data-lucide="shield-check"></i> ความมั่นคงแบบองค์รวม</h3>
+                    <ul class="holistic-list">
+                        <li>
+                            <strong>นิเวศวิทยา (Ecological)</strong>
+                            <span
+                                style="font-size: 0.85rem;">แก้ปัญหาความหลากหลายทางชีวภาพและปกป้องห่วงโซ่อาหารทางทะเล</span>
+                        </li>
+                        <li>
+                            <strong>เศรษฐกิจ (Economic)</strong>
+                            <span style="font-size: 0.85rem;">ลดความเปราะบางให้ชาวประมงพื้นบ้าน
+                                ผลักดันโมเดลเศรษฐกิจสีน้ำเงิน</span>
+                        </li>
+                        <li>
+                            <strong>สังคม/สุขภาพ (Social & Health)</strong>
+                            <span style="font-size: 0.85rem;">ผสานฐานข้อมูลชุมชนและวิทยาศาสตร์ สู่การใช้ Digital Health
+                                ระดับรากหญ้า</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar section" style="margin-top: 2rem; background: var(--primary-dark); color: white;">
+                    <h3 class="section-title"
+                        style="font-size: 1.1rem; border-color: rgba(255,255,255,0.2); color: white;"><i
+                            data-lucide="lightbulb" style="color: #fbbf24;"></i> Core Value</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.9; font-style: italic;">
+                        "การพัฒนาที่ยั่งยืนเริ่มต้นจากการลงมือทำด้วยจิตอาสาและความเชี่ยวชาญ
+                        คืนองค์ความรู้สู่ชุมชนเพื่อเป็นอากาศที่ชุมชนหายใจได้อย่างแท้จริง"
+                    </p>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Initialize icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
