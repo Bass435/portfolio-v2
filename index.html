@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,8 +48,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .header {
@@ -71,7 +79,7 @@
             justify-content: center;
             font-size: 4rem;
             color: var(--primary);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         .name {
@@ -155,12 +163,14 @@
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
+
             .header {
                 padding: 3rem 2rem;
             }
         }
     </style>
 </head>
+
 <body>
 
     <div class="cv-container">
@@ -177,7 +187,10 @@
                 <section class="section">
                     <h2 class="section-title"><i class="fa-solid fa-user"></i> เกี่ยวกับฉัน</h2>
                     <div class="text-block">
-                        <p>นักศึกษาที่มีความกระตือรือร้นในการพัฒนาตนเองและท้องถิ่น มุ่งเน้นการบูรณาการความรู้ทางวิชาการเข้ากับความต้องการของสังคม เพื่อเติบโตเป็นทรัพยากรบุคคลที่มีคุณภาพ พร้อมเป็น "ปัญญาของแผ่นดิน" และขับเคลื่อนการพัฒนาในเขตภาคเหนือตอนล่าง</p>
+                        <p>นักศึกษาที่มีความกระตือรือร้นในการพัฒนาตนเองและท้องถิ่น
+                            มุ่งเน้นการบูรณาการความรู้ทางวิชาการเข้ากับความต้องการของสังคม
+                            เพื่อเติบโตเป็นทรัพยากรบุคคลที่มีคุณภาพ พร้อมเป็น "ปัญญาของแผ่นดิน"
+                            และขับเคลื่อนการพัฒนาในเขตภาคเหนือตอนล่าง</p>
                     </div>
                 </section>
 
@@ -217,9 +230,25 @@
                 </section>
 
                 <section class="section" style="margin-top: 2rem;">
+                    <h2 class="section-title"><i class="fa-solid fa-laptop-code"></i> ผลงานที่โดดเด่น</h2>
+                    <div class="text-block">
+                        <h3 style="font-weight: 500; font-size: 1.1rem; color: var(--primary);"><a
+                                href="https://bass435.github.io/blockchain-tracker/" target="_blank"
+                                style="text-decoration: none; color: inherit;"
+                                onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'"><i class="fa-solid fa-link"></i> JIBCHAIN
+                                L1 Sensor Dashboard</a></h3>
+                        <p style="font-size: 0.95rem; margin-top: 0.25rem;">Web Application
+                            สำหรับอ่านค่าสถิติเซ็นเซอร์ระดับน้ำและแบตเตอรี่จาก Smart Contract บนระบบ Blockchain
+                            (JIBCHAIN L1) แบบ Real-time พร้อมแสดงผลผ่านกราฟข้อมูลย้อนหลัง</p>
+                    </div>
+                </section>
+
+                <section class="section" style="margin-top: 2rem;">
                     <h2 class="section-title"><i class="fa-solid fa-award"></i> เป้าหมาย</h2>
                     <div class="text-block">
-                        <p>พัฒนาสู่การเป็น "บัณฑิตนักปฏิบัติ" ที่มีทักษะทางปัญญาและทักษะทางวิชาชีพ สามารถนำความรู้ไปแก้ไขปัญหาจริงให้กับชุมชน (Socially Engaged Research)</p>
+                        <p>พัฒนาสู่การเป็น "บัณฑิตนักปฏิบัติ" ที่มีทักษะทางปัญญาและทักษะทางวิชาชีพ
+                            สามารถนำความรู้ไปแก้ไขปัญหาจริงให้กับชุมชน (Socially Engaged Research)</p>
                     </div>
                 </section>
             </div>
@@ -227,4 +256,5 @@
     </div>
 
 </body>
+
 </html>
